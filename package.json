@@ -1,7 +1,7 @@
 {
   "name": "googlebooks-app",
   "version": "1.0.0",
-  "description": "",
+  "description": "A fully functioning Google Books API search engine built with a RESTful API, Node, Express, and MongoDB.",
   "main": "server/server.js",
   "scripts": {
     "start": "node server/server.js",
@@ -11,8 +11,22 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "concurrently": "^5.1.0"
-  }
+  },
+  "dependencies": {
+    "apollo-client": "^2.6.10",
+    "graphql": "^15.5.2",
+    "@apollo/react-hooks": "4.0.0",
+    "if-env": "^1.0.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Adam42288/book-search-engine"
+  },
+  "bugs": {
+    "url": "https://github.com/Adam42288/book-search-engine/issues"
+  },
+  "homepage": "https://github.com/Adam42288/book-search-engine#readme"
 }
