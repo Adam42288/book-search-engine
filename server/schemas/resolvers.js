@@ -1,5 +1,4 @@
 const { AuthenticationError } = require("apollo-server-express");
-
 const { User } = require("../models");
 const { signToken } = require("../utils/auth");
 
@@ -10,11 +9,11 @@ const resolvers = {
         if (context.user) {
             const userData = await User.findOne({ _id: context.user._id })
                 .select('-__v -password');
-                // returns everything BUT password
+                // returns everything but password
   
             return userData;
         }
-      throw new AuthenticationError("No user found. Please login or register");
+      throw new AuthenticationError("Error: Invalid User. Please login or register");
     },
   },
 
@@ -30,13 +29,13 @@ const resolvers = {
       const user = await user.findOne({ email });
 
       if (!user) {
-        throw new AuthenticationError("No user found");
+        throw new AuthenticationError("Error: Invalid User. Please login or register");
       }
 
       const correctPw = await user.isCorrectPassword(password);
 
       if (!correctPw) {
-        throw new AuthenticationError("Incorrect Password");
+        throw new AuthenticationError("Error: Invalid User. Please login or register");
       }
 
       const token = signToken(user);
@@ -51,7 +50,7 @@ const resolvers = {
           { new: true, runValidators: true }
         );
       }
-      throw new AuthenticationError("Please login or register");
+      throw new AuthenticationError("Error: Invalid User. Please login or register");
     },
 
     // removeBook: async (_parent, { userId, bookId }, context) => {
@@ -64,7 +63,7 @@ const resolvers = {
         );
         return updatedUser;
       }
-      throw new AuthenticationError("Please login or register");
+      throw new AuthenticationError("Error: Invalid User. Please login or register");
     },
   },
 };
