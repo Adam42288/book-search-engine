@@ -7,7 +7,7 @@ import {
   Card,
   CardColumns,
 } from "react-bootstrap";
-import { Jumbotron } from "react";
+import { Jumbotron } from "bootstrap";
 import Auth from "../utils/auth";
 import { saveBookIds, getSavedBookIds } from "../utils/localStorage";
 import { saveBook, searchGoogleBooks } from "../utils/API";
