@@ -1,5 +1,4 @@
 import React from "react";
-
 import {
   ApolloClient,
   InMemoryCache,
@@ -7,7 +6,6 @@ import {
   createHttpLink,
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
-
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import SearchBooks from "./pages/SearchBooks";
 import SavedBooks from "./pages/SavedBooks";
@@ -18,6 +16,7 @@ const httpLink = createHttpLink({
   uri: "/graphql",
 });
 
+// Middleware to authenticate requests
 const authLink = setContext((_, { headers }) => {
   const token = localStorage.getItem("id_token");
   return {
@@ -28,12 +27,14 @@ const authLink = setContext((_, { headers }) => {
   };
 });
 
+// Create Apollo client
 const client = new ApolloClient({
   uri: "graphql",
   link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
 
+ // App component
 function App() {
   return (
     <ApolloProvider client={client}>
