@@ -13,7 +13,6 @@ import { useMutation, useQuery } from "@apollo/client";
 import { REMOVE_BOOK } from "../utils/mutations";
 import { GET_ME } from "../utils/queries";
 
-// import { useQuery, useMutation } from '@apollo/client';
 const SavedBooks = () => {
   const { loading, data } = useQuery(GET_ME);
   const [removeBook, { error }] = useMutation(REMOVE_BOOK);
