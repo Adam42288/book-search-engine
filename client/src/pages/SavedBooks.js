@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Jumbotron, Container, Card, Button } from "react-bootstrap";
-import { CardColumns } from "react-bootstrap/Card";
+import {
+  Jumbotron,
+  Container,
+  CardColumns,
+  Card,
+  Button,
+} from "react-bootstrap";
 import { getMe, deleteBook } from "../utils/API";
 import Auth from "../utils/auth";
 import { removeBookId } from "../utils/localStorage";
